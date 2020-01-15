@@ -4,7 +4,6 @@ function DialogController($scope, $mdDialog, user) {
 
     $scope.editedUser = {};
     $scope.user = user;
-    // console.log( $scope.user);
 
     $scope.hide = function () {
         $mdDialog.hide();
@@ -23,6 +22,5 @@ function DialogController($scope, $mdDialog, user) {
             $scope.editedUser = user;
             $mdDialog.hide($scope.editedUser);
         }
-
     }
 }
