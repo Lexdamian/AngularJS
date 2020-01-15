@@ -16,6 +16,7 @@
     <script src="JS/app.js?r=1"></script>
     <script src="./JS/controllers/DialogController.js"></script>
     <script src="./JS/controllers/ListCtrl.js"></script>
+    <script src="./JS/directives/userInfo.js"></script>
 
 
     <base href="/AngularMaterial/">
@@ -70,44 +71,15 @@
                 <md-grid-tile>
                     <span>Edit</span>
                 </md-grid-tile>
+
             </md-grid-list>
-            <div class="list-group">
-                <md-grid-list md-cols="9" md-gutter="1em" md-row-height="2em" ng-repeat="user in users track by $index">
-                    <md-grid-tile class="list-group-item">
-                        <span>{{user.id}}</span>
-                    </md-grid-tile>
-                    <md-grid-tile>
-                        <span>{{user.name}}</span>
-                    </md-grid-tile>
-                    <md-grid-tile>
-                        <span>{{user.username}}</span>
-                    </md-grid-tile>
-                    <md-grid-tile>
-                        <span>{{user.email}}</span>
-                    </md-grid-tile>
-                    <md-grid-tile>
-                        <span>{{user.address.street}}</span>
-                    </md-grid-tile>
-                    <md-grid-tile>
-                        <span>{{user.phone}}</span>
-                    </md-grid-tile>
-                    <md-grid-tile>
-                        <span>{{user.website}}</span>
-                    </md-grid-tile>
-                    <md-grid-tile>
-                        <span>{{user.company.name}}</span>
-                    </md-grid-tile>
-                    <md-grid-tile>
-                        <div>
-                            <md-button class="md-icon-button" aria-label="Settings" ng-click="edit(user)">
-                                <md-icon><img src="https://img.icons8.com/android/12/000000/menu.png"></md-icon>
-                            </md-button>
-                        </div>
-                    </md-grid-tile>
-                </md-grid-list>
+            <div class="list-group" ng-repeat="user in users track by $index">
+                <user-info info="user"></user-info>
             </div>
         </div>
     </md-card>
+
+
 
 
     <!-- The old table -->

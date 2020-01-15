@@ -1,0 +1,33 @@
+<md-grid-list md-cols="9" md-gutter="1em" md-row-height="2em" >
+    <md-grid-tile>
+        <span>{{info.id}}</span>
+    </md-grid-tile>
+    <md-grid-tile>
+        <span>{{info.name}}</span>
+    </md-grid-tile>
+    <md-grid-tile>
+        <span>{{info.username}}</span>
+    </md-grid-tile>
+    <md-grid-tile>
+        <span>{{info.email}}</span>
+    </md-grid-tile>
+    <md-grid-tile>
+        <span>{{info.address.street}}</span>
+    </md-grid-tile>
+    <md-grid-tile>
+        <span>{{info.phone}}</span>
+    </md-grid-tile>
+    <md-grid-tile>
+        <span>{{info.website}}</span>
+    </md-grid-tile>
+    <md-grid-tile>
+        <span>{{info.company.name}}</span>
+    </md-grid-tile>
+    <md-grid-tile>
+        <div>
+            <md-button class="md-icon-button"  aria-label="Settings" ng-click="edit(info)">
+                <md-icon><img src="https://img.icons8.com/android/12/000000/menu.png"></md-icon>
+            </md-button>
+        </div>
+    </md-grid-tile>
+</md-grid-list>
