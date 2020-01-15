@@ -1,0 +1,34 @@
+<!--<md-toolbar class="md-whiteframe-4dp">-->
+<!--    <div class="md-toolbar-tools">-->
+<!--        <div class="md-title">Users</div>-->
+<!--    </div>-->
+<!--</md-toolbar>-->
+
+
+<table flex="row" ng-controller="ListCtrl">
+    <thead>
+    <tr>
+        <td flex="10">ID</td>
+        <td flex="10">Name</td>
+        <td flex="15">User Name</td>
+        <td flex="15">E-mail</td>
+        <td flex="10">Address</td>
+        <td flex="10">Phone</td>
+        <td flex="15">Website</td>
+        <td flex="10">Company</td>
+    </tr>
+    </thead>
+    <tbody>
+    <tr ng-repeat="user in users" class="md-whiteframe-4dp">
+        <td>{{user.id}}</td>
+        <td>{{user.name}}</td>
+        <td>{{user.username}}</td>
+        <td>{{user.email}}</td>
+        <td>{{user.address.street}}</td>
+        <td>{{user.phone}}</td>
+        <td>{{user.website}}</td>
+        <td>{{user.company.name}}</td>
+        <td><md-button  ng-click="openModal(user)">Edit</md-button></td>
+    </tr>
+    </tbody>
+</table>

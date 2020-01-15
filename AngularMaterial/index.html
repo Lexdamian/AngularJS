@@ -1,0 +1,280 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="UserList">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet"
+          href="https://ajax.googleapis.com/ajax/libs/angular_material/1.1.19/angular-material.min.css"/>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700,400italic">
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.7.9/angular.min.js"></script>
+    <script src="lib/angular-route.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.7.9/angular-animate.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.7.9/angular-aria.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.7.9/angular-messages.min.js"></script>
+    <script src="node_modules/angular-material/angular-material.min.js"></script>
+    <script src="https://rawgit.com/daniel-nagy/md-data-table/master/dist/md-data-table.js"></script>
+    <!--    <script type="text/javascript" src="bower_components/angular-material-data-table/dist/md-data-table.min.js"></script>-->
+    <script src="JS/app.js?r=1"></script>
+    <script src="./JS/controllers/DialogController.js"></script>
+    <script src="./JS/controllers/ListCtrl.js"></script>
+
+
+    <base href="/AngularMaterial/">
+    <title>Request</title>
+</head>
+<body layout="column">
+
+
+<div ng-controller="AppCtrl">
+
+    <md-card>
+        <md-toolbar class="md-table-toolbar md-default" layout="row" layout-align="space-around center">
+            <div class="md-toolbar-tools">
+                <span>
+                    <md-icon>
+                        <img src="https://material.angularjs.org/latest/img/icons/angular-logo.svg"
+                             alt="Alternate Text"/>
+                    </md-icon>
+                </span>
+                &nbsp;
+                <span>AngularJS Material User Lists</span>
+                <div flex></div>
+            </div>
+        </md-toolbar>
+        <div ng-controller="ListCtrl">
+            <md-grid-list md-cols="9" md-gutter="1em" md-row-height="2em" class="md-whiteframe-2dp"
+                          style="font-weight: bold">
+                <md-grid-tile>
+                    <span>ID</span>
+                </md-grid-tile>
+                <md-grid-tile>
+                    <span>Name</span>
+                </md-grid-tile>
+                <md-grid-tile>
+                    <span>Username</span>
+                </md-grid-tile>
+                <md-grid-tile>
+                    <span>E-mail</span>
+                </md-grid-tile>
+                <md-grid-tile>
+                    <span>Address</span>
+                </md-grid-tile>
+                <md-grid-tile>
+                    <span>Phone</span>
+                </md-grid-tile>
+                <md-grid-tile>
+                    <span>Website</span>
+                </md-grid-tile>
+                <md-grid-tile>
+                    <span>Company</span>
+                </md-grid-tile>
+                <md-grid-tile>
+                    <span>Edit</span>
+                </md-grid-tile>
+            </md-grid-list>
+            <div class="list-group">
+                <md-grid-list md-cols="9" md-gutter="1em" md-row-height="2em" ng-repeat="user in users track by $index">
+                    <md-grid-tile class="list-group-item">
+                        <span>{{user.id}}</span>
+                    </md-grid-tile>
+                    <md-grid-tile>
+                        <span>{{user.name}}</span>
+                    </md-grid-tile>
+                    <md-grid-tile>
+                        <span>{{user.username}}</span>
+                    </md-grid-tile>
+                    <md-grid-tile>
+                        <span>{{user.email}}</span>
+                    </md-grid-tile>
+                    <md-grid-tile>
+                        <span>{{user.address.street}}</span>
+                    </md-grid-tile>
+                    <md-grid-tile>
+                        <span>{{user.phone}}</span>
+                    </md-grid-tile>
+                    <md-grid-tile>
+                        <span>{{user.website}}</span>
+                    </md-grid-tile>
+                    <md-grid-tile>
+                        <span>{{user.company.name}}</span>
+                    </md-grid-tile>
+                    <md-grid-tile>
+                        <div>
+                            <md-button class="md-icon-button" aria-label="Settings" ng-click="edit(user)">
+                                <md-icon><img src="https://img.icons8.com/android/12/000000/menu.png"></md-icon>
+                            </md-button>
+                        </div>
+                    </md-grid-tile>
+                </md-grid-list>
+            </div>
+        </div>
+    </md-card>
+
+
+    <!-- The old table -->
+    <!--        <md-table-container flex="column" layout="column">-->
+
+    <!--            <table md-table layout="column">-->
+    <!--                <thead md-head flex="row">-->
+    <!--                <tr layout="row" layout-align="space-around">-->
+    <!--                <th md-column >-->
+    <!--                    <span>Id</span>-->
+    <!--                </th>-->
+    <!--                <th md-column>-->
+    <!--                    <span>Name</span>-->
+    <!--                </th>-->
+    <!--                <th md-column>-->
+    <!--                    <span>Username</span>-->
+    <!--                </th>-->
+    <!--                <th md-column>-->
+    <!--                    <span>E-mail</span>-->
+    <!--                </th>-->
+    <!--                <th md-column>-->
+    <!--                    <span>Address</span>-->
+    <!--                </th>-->
+    <!--                <th md-column>-->
+    <!--                    <span>Phone</span>-->
+    <!--                </th>-->
+    <!--                <th md-column>-->
+    <!--                    <span>Website</span>-->
+    <!--                </th>-->
+    <!--                <th md-column>-->
+    <!--                    <span>Companny</span>-->
+    <!--                </th>-->
+
+    <!--                </tr>-->
+    <!--                </thead>-->
+    <!--                <tbody md-body ng-controller="ListCtrl" flex="row">-->
+    <!--                <tr md-row ng-repeat="user in users" layout="row" layout-align="space-around" class="md-whiteframe-1dp">-->
+    <!--                    <td md-cell>{{user.id}}</td>-->
+    <!--                    <td md-cell>{{user.name}}</td>-->
+    <!--                    <td md-cell>{{user.username}}</td>-->
+    <!--                    <td md-cell>{{user.email}}</td>-->
+    <!--                    <td md-cell>{{user.address.street}}</td>-->
+    <!--                    <td md-cell>{{user.phone}}</td>-->
+    <!--                    <td md-cell>{{user.website}}</td>-->
+    <!--                    <td md-cell>{{user.company.name}}</td>-->
+    <!--                    <td md-cell><md-button ng-click="openModal(user)">Edit</md-button></td>-->
+
+    <!--                </tr>-->
+    <!--                </tbody>-->
+    <!--            </table>-->
+    <!--        </md-table-container>-->
+
+
+    <!--        <md-table-pagination md-limit="query.limit" md-limit-options="limitOptions" md-page="query.page"-->
+    <!--                             md-total="{{customers.length}}" md-page-select="options.pageSelect"-->
+    <!--                             md-boundary-links="options.boundaryLinks"-->
+    <!--                             md-on-paginate="logPagination"></md-table-pagination>-->
+
+
+    <!--    <md-toolbar class="md-whiteframe-4dp">-->
+    <!--        <div class="md-toolbar-tools">-->
+    <!--            <div class="md-title">Material Design</div>-->
+    <!--        </div>-->
+    <!--    </md-toolbar>-->
+
+    <!--    <md-card>-->
+
+    <!--        <md-toolbar class="md-toolbar">-->
+    <!--            <div class="md-toolbar-tools">-->
+    <!--                <span>Users list</span>-->
+    <!--            </div>-->
+    <!--        </md-toolbar>-->
+
+
+    <!--            <table flex="column">-->
+    <!--                <thead>-->
+    <!--                <tr layout="row" layout-align="space-around">-->
+    <!--                    <td>ID</td>-->
+    <!--                    <td>Name</td>-->
+    <!--                    <td>User Name</td>-->
+    <!--                    <td>E-mail</td>-->
+    <!--                    <td>Address</td>-->
+    <!--                    <td>Phone</td>-->
+    <!--                    <td>Website</td>-->
+    <!--                    <td>Company</td>-->
+    <!--                </tr>-->
+    <!--                </thead>-->
+    <!--                <tbody>-->
+    <!--                <tr layout="row" layout-align="space-around center" class="md-whiteframe-6dp">-->
+    <!--                    <td>{{user.id}}</td>-->
+    <!--                    <td>{{user.name}}</td>-->
+    <!--                    <td>{{user.username}}</td>-->
+    <!--                    <td>{{user.email}}</td>-->
+    <!--                    <td>{{user.address.street}}</td>-->
+    <!--                    <td>{{user.phone}}</td>-->
+    <!--                    <td>{{user.website}}</td>-->
+    <!--                    <td>{{user.company.name}}</td>-->
+    <!--                    <td>-->
+    <!--                        <md-button ng-click="openModal(user)">Edit</md-button>-->
+    <!--                    </td>-->
+    <!--                </tr>-->
+    <!--                </tbody>-->
+    <!--            </table>-->
+
+
+    <!--    </md-card>-->
+
+    <!--    <div ng-view></div>-->
+
+    <!-- Modal -->
+
+    <!--        <div ng-controller="EditCtrl" class="modal fade" id="editModal" tabindex="-1" role="dialog"-->
+    <!--             aria-labelledby="basicModal" aria-hidden="true">-->
+    <!--            <div class="modal-dialog" role="document">-->
+    <!--                <div class="modal-content">-->
+    <!--                    <div class="modal-header text-center">-->
+    <!--                        <h5 class="modal-title"  ng-model="clonedItem.name">{{clonedItem.name}}</h5>-->
+    <!--                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">-->
+    <!--                            <span aria-hidden="true">&times;</span>-->
+    <!--                        </button>-->
+    <!--                        <br>-->
+
+    <!--                    </div>-->
+    <!--                    <div class="modal-body">-->
+    <!--                        <div class="form-group" style="...">-->
+    <!--                            <form action="">-->
+    <!--                                <label>Name: </label>-->
+    <!--                                <input type="text"  minlength="6" maxlength="25" class="form-control" ng-model="clonedItem.name" placeholder="Edit name" required>-->
+    <!--                                <br>-->
+    <!--                                <br>-->
+    <!--                                <label>User Name: </label>-->
+    <!--                                <input type="text" class="form-control" type="text" ng-model="clonedItem.username" placeholder="Edit user name" required>-->
+    <!--                                <br>-->
+    <!--                                <br>-->
+    <!--                                <label>E-mail: </label>-->
+    <!--                                <input pattern="^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$" class="form-control" data-error="Bruh, that email address is invalid" ng-model="clonedItem.email" placeholder="Edit e-mail" required>-->
+    <!--                                <br>-->
+    <!--                                <br>-->
+    <!--                                <label>Address: </label>-->
+    <!--                                <input type="text" class="form-control" type="text" ng-model="clonedItem.address.street" placeholder="Edit address">-->
+    <!--                                <br>-->
+    <!--                                <br>-->
+    <!--                                <label>Phone: </label>-->
+    <!--                                <input  class="form-control" type="tel" pattern='[\+]\d{2}[\-]\d{9}' ng-model="clonedItem.phone" placeholder="Edit phone number" required>-->
+    <!--                                <small class="small">Format: +99-999999999</small>-->
+    <!--                                <br>-->
+    <!--                                <br>-->
+    <!--                                <label>Website: </label>-->
+    <!--                                <input type="text" class="form-control" type="text" ng-model="clonedItem.website" placeholder="Edit website">-->
+    <!--                                <br>-->
+    <!--                                <br>-->
+    <!--                                <label>Company</label>-->
+    <!--                                <input type="text" class="form-control" type="text" ng-model="clonedItem.company.name" placeholder="Edit company" required>-->
+    <!--                                <br>-->
+    <!--                                <br>-->
+    <!--                                <button type="submit" class="btn btn-secondary">Save</button>-->
+    <!--                                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>-->
+    <!--                            </form>-->
+    <!--                        </div>-->
+    <!--                    </div>-->
+    <!--                </div>-->
+    <!--            </div>-->
+    <!--        </div>-->
+
+    <!--    <div ng-view></div>-->
+
+</div>
+
+</body>
+</html>

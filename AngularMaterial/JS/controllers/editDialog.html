@@ -1,0 +1,172 @@
+<md-dialog aria-label="List dialog" class="md-dialog" style="width: 700px">
+    <md-dialog-content class="md-padding">
+        <form name="editUser" novalidate>
+            <md-list layout="row" layout-align="space-around">
+                <div layout="column" layout-align="center center">
+                    <md-list-item>
+                        <h3>{{user.name}}</h3>
+                    </md-list-item>
+
+                    <md-list-item>
+                        <md-input-container>
+                            <label>Name: </label>
+
+                            <div ng-messages="editUser.name.$error">
+                                <div ng-if="editUser.name.$error.required" ng-message="required">this is required!
+                                </div>
+                                <div ng-message="md-maxlength">That's too long!</div>
+                                <div ng-message="minlength">That's too short!</div>
+                            </div>
+
+                            <input type="text" name="name" ng-minlength="3" md-maxlength="25"
+                                   placeholder="Insert your name"
+                                   ng-model="user.name"
+                                   required="required">
+                        </md-input-container>
+                    </md-list-item>
+
+                    <md-list-item>
+                        <md-input-container>
+                            <label>User name: </label>
+
+                            <div ng-messages="editUser.username.$error">
+                                <div ng-if="editUser.username.$error.required" ng-message="required">this is required!
+                                </div>
+                                <div ng-message="md-maxlength">That's too long!</div>
+                                <div ng-message="minlength">That's too short!</div>
+                            </div>
+
+                            <input type="text" name="username" ng-minlength="3" md-maxlength="25"
+                                   placeholder="Insert your username" ng-model="user.username" required>
+                        </md-input-container>
+                    </md-list-item>
+
+
+                    <md-list-item>
+                        <md-input-container>
+                            <label>E-mail: </label>
+
+                            <div ng-messages="editUser.email.$error">
+                                <div ng-if="editUser.email.$error.required" ng-message="required">this is required!
+                                </div>
+                                <div ng-message="md-maxlength">That's too long!</div>
+                                <div ng-message="pattern">Please insert a valid format!</div>
+                            </div>
+
+                            <input type="email" name="email" pattern="^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$"
+                                   md-maxlength="80" placeholder="Insert your email" ng-model="user.email" required>
+                        </md-input-container>
+                    </md-list-item>
+                </div>
+
+
+                <div layout="column" layout-align="center center">
+                    <md-list-item>
+                        <md-input-container>
+                            <label>Address: </label>
+                            <input type="text" placeholder="Insert your address" ng-model="user.address.street">
+                        </md-input-container>
+                    </md-list-item>
+
+
+                    <md-list-item>
+                        <md-input-container>
+                            <label>Phone: </label>
+
+                            <div ng-messages="editUser.phone.$error">
+                                <div ng-if="editUser.phone.$error.required" ng-message="required">this is required!
+                                </div>
+                                <div ng-message="pattern">Please insert the correct format!</div>
+
+                            </div>
+
+                            <input type="tel" name="phone" pattern="[\+]\d{2}[\-]\d{9}"
+                                   placeholder="Format: +32-45829653" ng-model="user.phone" required>
+
+                        </md-input-container>
+                    </md-list-item>
+
+
+                    <md-list-item>
+                        <md-input-container>
+                            <label>Website: </label>
+                            <input type="text" placeholder="Insert your website" ng-model="user.website">
+                        </md-input-container>
+                    </md-list-item>
+
+
+                    <md-list-item>
+                        <md-input-container>
+                            <label>Company: </label>
+
+                            <div ng-messages="editUser.company.$error">
+                                <div ng-if="editUser.company.$error.required" ng-message="required">this is required!
+                                </div>
+                            </div>
+
+                            <input type="text" name="company" placeholder="Insert your company name"
+                                   ng-model="user.company.name">
+                        </md-input-container>
+                    </md-list-item>
+                </div>
+            </md-list>
+        </form>
+    </md-dialog-content>
+    <md-dialog-actions layout-align="center center">
+        <md-button ng-click="save()" class="md-primary">Save</md-button>
+    </md-dialog-actions>
+</md-dialog>
+
+
+<!--        <div ng-controller="EditCtrl" class="modal fade" id="editModal" tabindex="-1" role="dialog"-->
+<!--             aria-labelledby="basicModal" aria-hidden="true">-->
+<!--            <div class="modal-dialog" role="document">-->
+<!--                <div class="modal-content">-->
+<!--                    <div class="modal-header text-center">-->
+<!--                        <h5 class="modal-title"  ng-model="clonedItem.name">{{clonedItem.name}}</h5>-->
+<!--                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">-->
+<!--                            <span aria-hidden="true">&times;</span>-->
+<!--                        </button>-->
+<!--                        <br>-->
+
+<!--                    </div>-->
+<!--                    <div class="modal-body">-->
+<!--                        <div class="form-group" style="...">-->
+<!--                            <form action="">-->
+<!--                                <label>Name: </label>-->
+<!--                                <input type="text"  minlength="6" maxlength="25" class="form-control" ng-model="clonedItem.name" placeholder="Edit name" required>-->
+<!--                                <br>-->
+<!--                                <br>-->
+<!--                                <label>User Name: </label>-->
+<!--                                <input type="text" class="form-control" type="text" ng-model="clonedItem.username" placeholder="Edit user name" required>-->
+<!--                                <br>-->
+<!--                                <br>-->
+<!--                                <label>E-mail: </label>-->
+<!--                                <input pattern="^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$" class="form-control" data-error="Bruh, that email address is invalid" ng-model="clonedItem.email" placeholder="Edit e-mail" required>-->
+<!--                                <br>-->
+<!--                                <br>-->
+<!--                                <label>Address: </label>-->
+<!--                                <input type="text" class="form-control" type="text" ng-model="clonedItem.address.street" placeholder="Edit address">-->
+<!--                                <br>-->
+<!--                                <br>-->
+<!--                                <label>Phone: </label>-->
+<!--                                <input  class="form-control" type="tel" pattern='[\+]\d{2}[\-]\d{9}' ng-model="clonedItem.phone" placeholder="Edit phone number" required>-->
+<!--                                <small class="small">Format: +99-999999999</small>-->
+<!--                                <br>-->
+<!--                                <br>-->
+<!--                                <label>Website: </label>-->
+<!--                                <input type="text" class="form-control" type="text" ng-model="clonedItem.website" placeholder="Edit website">-->
+<!--                                <br>-->
+<!--                                <br>-->
+<!--                                <label>Company</label>-->
+<!--                                <input type="text" class="form-control" type="text" ng-model="clonedItem.company.name" placeholder="Edit company" required>-->
+<!--                                <br>-->
+<!--                                <br>-->
+<!--                                <button type="submit" class="btn btn-secondary">Save</button>-->
+<!--                                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>-->
+<!--                            </form>-->
+<!--                        </div>-->
+<!--                    </div>-->
+<!--                </div>-->
+<!--            </div>-->
+<!--        </div>-->
