@@ -8,9 +8,9 @@
                     </md-list-item>
 
                     <!--                    <user-info edit-user="editedUser" test="test(message)"></user-info>-->
-                    <sum ng-model="user.name_struct"></sum>
+                    <sum ng-model="newUser.name_struct"></sum>
 
-                    <sum ng-model="user.name_struct2"></sum>
+                    <sum ng-model="newUser.name_struct2"></sum>
 
 
 <!--                    <span>{{user.name_struct.first_name}}</span>-->
@@ -27,7 +27,7 @@
                                 <div ng-message="minlength">That's too short!</div>
                             </div>
 
-                            <input type="text" name="username" ng-minlength="3" md-maxlength="25"
+                            <input type="text" name="name" ng-minlength="3" md-maxlength="25"
                                    placeholder="Insert your username" ng-model="user.name" required>
                         </md-input-container>
                     </md-list-item>

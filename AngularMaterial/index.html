@@ -14,8 +14,9 @@
     <script src="https://rawgit.com/daniel-nagy/md-data-table/master/dist/md-data-table.js"></script>
     <!--    <script type="text/javascript" src="bower_components/angular-material-data-table/dist/md-data-table.min.js"></script>-->
     <script src="JS/app.js?r=1"></script>
-    <script src="./JS/controllers/DialogController.js"></script>
+
     <script src="./JS/controllers/ListCtrl.js"></script>
+    <script src="./JS/controllers/DialogController.js"></script>
     <script src="./JS/directives/userInfo.js"></script>
 
 
@@ -28,17 +29,22 @@
 <div ng-controller="AppCtrl">
 
     <md-card>
-        <md-toolbar class="md-table-toolbar md-default" layout="row" layout-align="space-around center">
-            <div class="md-toolbar-tools">
+        <md-toolbar class="md-table-toolbar md-default" flex="row" >
+            <div class="md-toolbar-tools" flex="row" >
+                <div >
                 <span>
                     <md-icon>
                         <img src="https://material.angularjs.org/latest/img/icons/angular-logo.svg"
                              alt="Alternate Text"/>
                     </md-icon>
                 </span>
-                &nbsp;
-                <span>AngularJS Material User Lists</span>
-                <div flex></div>
+                    &nbsp;
+                    <span>AngularJS Material User Lists</span>
+                </div>
+                <div  style="margin-left: 20%">
+                    <label>Search user: </label>
+                    <input ng-model="userSearch" >
+                </div>
             </div>
         </md-toolbar>
         <div ng-controller="ListCtrl">
@@ -73,13 +79,77 @@
                 </md-grid-tile>
 
             </md-grid-list>
-            <div class="list-group" ng-repeat="user in users track by $index">
-                <user-info info="user"></user-info>
+            <div class="list-group" ng-repeat="user in users | filter:userSearch">
+                <md-grid-list md-cols="9" md-gutter="1em" md-row-height="2em">
+                    <md-grid-tile>
+                        <span>{{user.id}}</span>
+                    </md-grid-tile>
+                    <md-grid-tile>
+                        <span>{{user.name}}</span>
+                    </md-grid-tile>
+                    <md-grid-tile>
+                        <span>{{user.username}}</span>
+                    </md-grid-tile>
+                    <md-grid-tile>
+                        <span>{{user.email}}</span>
+                    </md-grid-tile>
+                    <md-grid-tile>
+                        <span>{{user.address.street}}</span>
+                    </md-grid-tile>
+                    <md-grid-tile>
+                        <span>{{user.phone}}</span>
+                    </md-grid-tile>
+                    <md-grid-tile>
+                        <span>{{user.website}}</span>
+                    </md-grid-tile>
+                    <md-grid-tile>
+                        <span>{{user.company.name}}</span>
+                    </md-grid-tile>
+                    <md-grid-tile>
+                        <div>
+                            <md-button class="md-icon-button" aria-label="Settings" ng-click="edit(user)">
+                                <md-icon><img src="https://img.icons8.com/android/12/000000/menu.png"></md-icon>
+                            </md-button>
+                            <md-button class="md-icon-button" aria-label="Settings" ng-click="add()">
+                                <md-icon><img src="https://img.icons8.com/android/24/000000/plus.png"
+                                              style="width: 15px; height: 15px"></md-icon>
+                            </md-button>
+                            <md-button class="md-icon-button" aria-label="Settings" ng-click="delete(user)">
+                                <md-icon><img src="https://img.icons8.com/ios/50/000000/delete-forever.png"
+                                              style="width: 20px; height: 20px"></md-icon>
+                            </md-button>
+                        </div>
+                    </md-grid-tile>
+                </md-grid-list>
             </div>
         </div>
+
+
     </md-card>
 
 
+    <!--    <div ng-controller="ListCtrl">-->
+    <!--        <sum data="customer"></sum>-->
+    <!--    </div>-->
+
+
+    <!--    <div class="col-md-5 col-md-offset-1">-->
+    <!--        <h3>Outer value</h3>-->
+    <!--        Outer Value: <input type="text" ng-model="outerVal"><br/>-->
+    <!--        <br/>-->
+
+    <!--        <sum val-through-at="{{outerVal}}">-->
+    <!--            <h3>Value through @</h3>-->
+    <!--        </sum>-->
+    <!--        <br>-->
+
+    <!--        <sum val-through-equals="outerVal">-->
+    <!--            <h3>Value through =</h3>-->
+    <!--        </sum>-->
+    <!--        <br>-->
+
+
+    <!--    </div>-->
 
 
     <!-- The old table -->
